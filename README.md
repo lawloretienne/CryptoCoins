@@ -1,4 +1,9 @@
+# Screenshots
+![Coins](coins.png)
+![Coin Details](coin_details.png)
+
 # Architecture
+
 * MVVM ![MVVM Diagram](https://developer.android.com/topic/libraries/architecture/images/final-architecture.png)
     * The *ViewModels* I am using extend from the lifecycle-aware ViewModel component. The *Views* 
     I am using are Activities. And the *Model* is the Repository.
