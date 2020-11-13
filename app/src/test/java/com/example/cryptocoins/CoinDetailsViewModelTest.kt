@@ -19,6 +19,7 @@ class CoinDetailsViewModelTest : BaseTest() {
 
     @RelaxedMockK
     lateinit var commandObserver: Observer<CoinDetailsViewModel.ViewCommand>
+
     @RelaxedMockK
     lateinit var stateObserver: Observer<CoinDetailsViewModel.ViewState>
 
