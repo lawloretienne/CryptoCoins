@@ -33,7 +33,7 @@ class CoinsViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `getRestaurants should ShowRestaurantDetails`() {
+    fun `getCoins should Success`() {
         // 1. (Given) Set up conditions required for the test
         coinsViewModel.viewState.observeForever(stateObserver)
         val coins = CoinFaker.list()
@@ -52,7 +52,7 @@ class CoinsViewModelTest : BaseTest() {
     }
 
     @Test
-    fun `getCoins should ShowError`() {
+    fun `getCoins should Error`() {
         // 1. (Given) Set up conditions required for the test
         coinsViewModel.viewState.observeForever(stateObserver)
         val throwable = Exception()
@@ -74,10 +74,10 @@ class CoinsViewModelTest : BaseTest() {
     fun `onCoinClicked should ShowCoinDetails`() {
         // 1. (Given) Set up conditions required for the test
         coinsViewModel.viewCommand.observeForever(commandObserver)
-        val restaurant = CoinFaker.basic()
+        val coin = CoinFaker.basic()
 
         // 2. (When) Then perform one or more actions
-        coinsViewModel.onCoinClicked(restaurant)
+        coinsViewModel.onCoinClicked(coin)
 
         // 3. (Then) Afterwards, verify that the state you are expecting is actually achieved
         verify { commandObserver.onChanged(any<CoinsViewModel.ViewCommand.ShowCoinDetails>()) }

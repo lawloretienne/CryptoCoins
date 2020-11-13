@@ -15,7 +15,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 class DatabaseModule {
 
     @Provides
-    fun provideDoordashDatabase(@ApplicationContext context: Context): CryptoCoinsDatabase {
+    fun provideCryptoCoinsDatabase(@ApplicationContext context: Context): CryptoCoinsDatabase {
         return Room.databaseBuilder(context, CryptoCoinsDatabase::class.java, "CryptoCoins.db")
             .fallbackToDestructiveMigration()
             .build()

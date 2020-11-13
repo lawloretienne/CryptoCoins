@@ -3,7 +3,7 @@
     * The *ViewModels* I am using extend from the lifecycle-aware ViewModel component. The *Views* 
     I am using are Activities. And the *Model* is the Repository.
 * Network, Database, and Domain Models with Mappers
-    * I have separated out the Restaurant object into different models depending on where the object 
+    * I have separated out the Coin object into different models depending on where the object 
     is used. I also have created Mapper interfaces to allowing mapping between the different models. 
     This helps to provides a clear understanding of the responsibility. This is in accordance with 
     Uncle Bob's Clean Architecture. The important thing is that isolated, simple, data structures 
@@ -26,7 +26,7 @@
     * This is where code lives that spans across the different layers of the application
 * Data
     * This is my data layer and consisted of the Room Database associated classes, the Network 
-    related classes including the RestaurantService interface, and the Repository class as well as 
+    related classes including the CoinsService interface, and the Repository class as well as 
     the local and remote data sources
 * Domain
     * This is the domain layer and consists of the domain model as well as the domain mapper
