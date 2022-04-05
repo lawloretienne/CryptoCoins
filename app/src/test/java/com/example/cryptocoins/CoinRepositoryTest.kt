@@ -7,9 +7,9 @@ import com.example.cryptocoins.data.respositories.coin.CoinRemoteDataSource
 import com.example.cryptocoins.data.respositories.coin.CoinRepository
 import com.example.cryptocoins.fakers.BaseFaker.Companion.Fake.faker
 import com.example.cryptocoins.fakers.CoinFaker
-import io.mockk.every
+import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
-import io.reactivex.Single
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -30,31 +30,29 @@ class CoinRepositoryTest : BaseTest() {
     }
 
     @Test
-    fun `getCoins should return Coins`() {
+    fun `getCoins should return Coins`() = runBlocking {
         val coins = CoinFaker.list()
 
-        every { coinRemoteDataSource.getCoins() }
-            .answers { Single.just(coins.toResponseModels())}
-        every { coinLocalDataSource.getCoins() }
-            .answers { Single.just(coins.toEntityModels())}
+        coEvery { coinRemoteDataSource.getCoins() }
+            .answers { coins.toResponseModels()}
+        coEvery { coinLocalDataSource.getCoins() }
+            .answers { coins.toEntityModels()}
 
-        coinRepository.getCoins()
-            .test()
-            .assertValue(coins.toResponseModels())
+        val result = coinRepository.getCoins()
+        assert(result == coins.toResponseModels())
     }
 
     @Test
-    fun `getCoin should return Coin`() {
+    fun `getCoin should return Coin`() = runBlocking {
         val coinId = faker.lorem().word()
         val coin = CoinFaker.basic()
 
-        every { coinRemoteDataSource.getCoin(coinId) }
-            .answers { Single.just(coin.toResponseModel()) }
-        every { coinLocalDataSource.getCoin(coinId) }
-            .answers { Single.just(coin.toEntityModel()) }
+        coEvery { coinRemoteDataSource.getCoin(coinId) }
+            .answers { coin.toResponseModel() }
+        coEvery { coinLocalDataSource.getCoin(coinId) }
+            .answers { coin.toEntityModel() }
 
-        coinRepository.getCoin(coinId)
-            .test()
-            .assertValue(coin.toResponseModel())
+        val result = coinRepository.getCoin(coinId)
+        assert(result == coin.toResponseModel())
     }
 }

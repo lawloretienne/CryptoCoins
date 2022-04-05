@@ -3,22 +3,20 @@ package com.example.cryptocoins.ui.coins
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.cryptocoins.core.common.SingleLiveEvent
 import com.example.cryptocoins.data.respositories.coin.CoinRepository
 import com.example.cryptocoins.domain.Coin
 import com.example.cryptocoins.domain.toDomainModels
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
 class CoinsViewModel @Inject constructor(
     val coinRepository: CoinRepository) : ViewModel() {
-
-    private val compositeDisposable = CompositeDisposable()
 
     val viewState: LiveData<ViewState>
         get() = _viewState
@@ -41,27 +39,21 @@ class CoinsViewModel @Inject constructor(
     fun getCoins() {
         _viewState.value = ViewState.Loading
 
-        compositeDisposable.add(
-            coinRepository.getCoins()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ coins ->
+        viewModelScope.launch {
+            runCatching {
+                try {
+                    var coins = coinRepository.getCoins()
                     _viewState.value = ViewState.Success(coins.toDomainModels())
-                }, {
-                    Timber.e(it)
+                } catch (e: Exception) {
+                    Timber.e(e)
                     _viewState.value = ViewState.Error
-                })
-
-        )
+                }
+            }
+        }
     }
 
     fun onCoinClicked(coin: Coin) {
         _viewCommand.value = ViewCommand.ShowCoinDetails(coin)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
     }
 
 }

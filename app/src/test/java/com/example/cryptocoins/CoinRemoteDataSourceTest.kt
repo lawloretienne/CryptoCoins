@@ -5,9 +5,9 @@ import com.example.cryptocoins.data.network.toResponseModels
 import com.example.cryptocoins.data.respositories.coin.CoinRemoteDataSource
 import com.example.cryptocoins.fakers.BaseFaker.Companion.Fake.faker
 import com.example.cryptocoins.fakers.CoinFaker
-import io.mockk.every
+import io.mockk.coEvery
 import io.mockk.impl.annotations.RelaxedMockK
-import io.reactivex.Single
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -25,27 +25,25 @@ class CoinRemoteDataSourceTest : BaseTest() {
     }
 
     @Test
-    fun `getCoins should return Coins`() {
+    fun `getCoins should return Coins`() = runBlocking {
         val coins = CoinFaker.list()
 
-        every { coinsService.getCoins() }
-            .answers { Single.just(coins.toResponseModels()) }
+        coEvery { coinsService.getCoins() }
+            .answers { coins.toResponseModels() }
 
-        coinRemoteDataSource.getCoins()
-            .test()
-            .assertValue(coins.toResponseModels())
+        val result = coinRemoteDataSource.getCoins()
+        assert(result == coins.toResponseModels())
     }
 
     @Test
-    fun `getCoin should return Coin`() {
+    fun `getCoin should return Coin`() = runBlocking {
         val coin = CoinFaker.basic()
         val coinId = faker.lorem().word()
 
-        every { coinsService.getCoin(coinId) }
-            .answers { Single.just(coin.toResponseModel()) }
+        coEvery { coinsService.getCoin(coinId) }
+            .answers { coin.toResponseModel() }
 
-        coinRemoteDataSource.getCoin(coinId)
-            .test()
-            .assertValue(coin.toResponseModel())
+        val result = coinRemoteDataSource.getCoin(coinId)
+        assert(result == coin.toResponseModel())
     }
 }

@@ -3,21 +3,19 @@ package com.example.cryptocoins.ui.coindetails
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.cryptocoins.core.common.SingleLiveEvent
 import com.example.cryptocoins.data.respositories.coin.CoinRepository
 import com.example.cryptocoins.domain.Coin
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
 class CoinDetailsViewModel @Inject constructor(
     val coinRepository: CoinRepository) : ViewModel() {
-
-    private val compositeDisposable = CompositeDisposable()
 
     val viewState: LiveData<ViewState>
         get() = _viewState
@@ -37,26 +35,20 @@ class CoinDetailsViewModel @Inject constructor(
     }
 
     fun getCoinDetails(coinId: String) {
-        compositeDisposable.add(
-            coinRepository.getCoin(coinId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ coin ->
+        viewModelScope.launch {
+            runCatching {
+                try {
+                    var coin = coinRepository.getCoin(coinId)
                     _viewState.value = ViewState.Success(coin.toDomainModel())
-                }, {
-                    Timber.e(it)
+                } catch (e: Exception) {
+                    Timber.e(e)
                     _viewState.value = ViewState.Error
-                })
-
-        )
+                }
+            }
+        }
     }
 
     fun onBackClicked() {
         _viewCommand.value = ViewCommand.CloseScreen
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
     }
 }

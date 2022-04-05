@@ -51,7 +51,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
 
 dependencies {
@@ -62,7 +66,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.constraintlayout:constraintlayout:2.1.3"
-    implementation "androidx.room:room-rxjava2:2.4.2"
     implementation "androidx.room:room-runtime:2.4.2"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.fragment:fragment-ktx:1.4.1'
@@ -78,7 +81,6 @@ dependencies {
     final RETROFIT_VERSION = '2.9.0'
     implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
 
     implementation "com.squareup.okhttp3:logging-interceptor:4.8.1"
 
@@ -91,8 +93,13 @@ dependencies {
     implementation 'com.google.dagger:hilt-android:2.36'
     kapt "com.google.dagger:hilt-android-compiler:2.36"
 
-    implementation "io.reactivex.rxjava2:rxjava:2.2.19"
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
+    // Coroutines support for Room
+    implementation 'androidx.room:room-ktx:2.5.0-alpha01'
+
 
     implementation "com.jakewharton.timber:timber:4.7.1"
     
@@ -105,16 +112,17 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:2.1.0"
     testImplementation 'androidx.test.ext:junit:1.1.3'
     testImplementation "androidx.room:room-testing:2.4.2"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1'
 
     // JUnit 5
-    final JUNIT_5_VERSION = '5.6.1'
-    testImplementation "org.junit.jupiter:junit-jupiter-api:$JUNIT_5_VERSION"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$JUNIT_5_VERSION"
+//    final JUNIT_5_VERSION = '5.6.1'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.0-M1"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.0-M1"
 
     // JUnit 4
     final JUNIT_4_VERSION = '4.13.2'
     testImplementation "junit:junit:$JUNIT_4_VERSION"
-    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$JUNIT_5_VERSION"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.8.0-M1"
 
     androidTestImplementation "androidx.room:room-testing:2.4.2"
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
