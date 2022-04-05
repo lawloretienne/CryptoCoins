@@ -5,13 +5,10 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import com.example.cryptocoins.R
+import com.example.cryptocoins.databinding.*
 import com.example.cryptocoins.domain.Coin
 import com.example.cryptocoins.ui.coindetails.CoinDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.coins_content_layout.*
-import kotlinx.android.synthetic.main.coins_loading_layout.*
-import kotlinx.android.synthetic.main.error_layout.*
 
 @AndroidEntryPoint
 class CoinsActivity : AppCompatActivity(), CoinsAdapter.OnItemClickListener {
@@ -19,18 +16,21 @@ class CoinsActivity : AppCompatActivity(), CoinsAdapter.OnItemClickListener {
     private val coinsViewModel: CoinsViewModel by viewModels()
     private val coinsAdapter = CoinsAdapter()
 
+    private lateinit var binding: ActivityCoinsBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityCoinsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        setContentView(R.layout.activity_coins)
-
-        recyclerView.apply {
+        binding.contentLayout.recyclerView.apply {
             coinsAdapter.onItemClickListener = this@CoinsActivity
             adapter = coinsAdapter
             addItemDecoration(CoinItemDecoration())
         }
 
-        reloadButton.setOnClickListener {
+        binding.errorLayout.reloadButton.setOnClickListener {
             coinsViewModel.getCoins()
         }
 
@@ -76,27 +76,27 @@ class CoinsActivity : AppCompatActivity(), CoinsAdapter.OnItemClickListener {
         }
     }
 
-    private fun showLoading() {
+    private fun showLoading() = with(binding.loadingLayout) {
         progressBar.visibility = View.VISIBLE
     }
 
-    private fun hideLoading() {
+    private fun hideLoading() = with(binding.loadingLayout) {
         progressBar.visibility = View.GONE
     }
 
-    private fun showError() {
+    private fun showError() = with(binding.errorLayout) {
         errorLinearLayout.visibility = View.VISIBLE
     }
 
-    private fun hideError() {
+    private fun hideError() = with(binding.errorLayout) {
         errorLinearLayout.visibility = View.GONE
     }
 
-    private fun showContent() {
+    private fun showContent() = with(binding.contentLayout) {
         recyclerView.visibility = View.VISIBLE
     }
 
-    private fun hideContent() {
+    private fun hideContent() = with(binding.contentLayout) {
         recyclerView.visibility = View.GONE
     }
 }

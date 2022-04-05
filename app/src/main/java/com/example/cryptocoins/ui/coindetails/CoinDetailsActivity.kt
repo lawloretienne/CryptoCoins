@@ -8,11 +8,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.example.cryptocoins.R
+import com.example.cryptocoins.databinding.ActivityCoinDetailsBinding
 import com.example.cryptocoins.domain.Coin
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_coin_details.*
 
 private const val COIN_ID = "COIN_ID"
 
@@ -21,6 +21,8 @@ class CoinDetailsActivity : AppCompatActivity() {
 
     private var coinId: String = ""
     private val coinDetailsViewModel: CoinDetailsViewModel by viewModels()
+
+    private lateinit var binding: ActivityCoinDetailsBinding
 
     companion object {
 
@@ -38,9 +40,11 @@ class CoinDetailsActivity : AppCompatActivity() {
             coinId = this?.getString(COIN_ID, "") ?: ""
         }
 
-        setContentView(R.layout.activity_coin_details)
+        binding = ActivityCoinDetailsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_24px)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -80,7 +84,7 @@ class CoinDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun showContent(coin: Coin){
+    private fun showContent(coin: Coin) = with(binding) {
         Picasso.get()
             .load(coin.image?.large)
             .into(coverImageView)

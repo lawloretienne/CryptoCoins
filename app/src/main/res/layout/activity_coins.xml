@@ -15,12 +15,16 @@
         app:titleTextColor="@color/primary_text_light"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <include layout="@layout/coins_content_layout"
+    <include
+        android:id="@+id/content_layout"
+        layout="@layout/coins_content_layout"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <include layout="@layout/coins_loading_layout"
+    <include
+        android:id="@+id/loading_layout"
+        layout="@layout/coins_loading_layout"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +32,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <include layout="@layout/error_layout"
+    <include
+        android:id="@+id/error_layout"
+        layout="@layout/error_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar"

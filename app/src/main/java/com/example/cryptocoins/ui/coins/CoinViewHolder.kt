@@ -1,14 +1,13 @@
 package com.example.cryptocoins.ui.coins
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.cryptocoins.databinding.CoinRowBinding
 import com.example.cryptocoins.domain.Coin
-import kotlinx.android.synthetic.main.coin_row.view.*
 
-class CoinViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class CoinViewHolder(binding: CoinRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    private val nameTextView = itemView.nameTextView
-    private val symbolTextView = itemView.symbolTextView
+    private val nameTextView = binding.nameTextView
+    private val symbolTextView = binding.symbolTextView
 
     fun bind(coin: Coin) {
         nameTextView.text = coin.name

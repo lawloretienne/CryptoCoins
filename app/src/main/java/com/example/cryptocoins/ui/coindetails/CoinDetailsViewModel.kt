@@ -1,18 +1,20 @@
 package com.example.cryptocoins.ui.coindetails
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.cryptocoins.core.common.SingleLiveEvent
 import com.example.cryptocoins.data.respositories.coin.CoinRepository
 import com.example.cryptocoins.domain.Coin
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
+import javax.inject.Inject
 
-class CoinDetailsViewModel @ViewModelInject constructor(
+@HiltViewModel
+class CoinDetailsViewModel @Inject constructor(
     val coinRepository: CoinRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
