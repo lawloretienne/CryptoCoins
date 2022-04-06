@@ -2,6 +2,7 @@ package com.example.cryptocoins.data.respositories.coin
 
 import com.example.cryptocoins.data.network.CoinsService
 import com.example.cryptocoins.data.network.response.CoinResponse
+import com.example.cryptocoins.data.network.response.ExchangeResponse
 import javax.inject.Inject
 
 class CoinRemoteDataSource @Inject constructor(

@@ -1,6 +1,7 @@
 package com.example.cryptocoins.data.network
 
 import com.example.cryptocoins.data.network.response.CoinResponse
+import com.example.cryptocoins.data.network.response.ExchangeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -21,4 +22,6 @@ interface CoinsService {
         @Query("sparkline") sparkline: Boolean = false
         ): CoinResponse
 
+    @GET("exchanges")
+    suspend fun getExchanges(): List<ExchangeResponse>
 }

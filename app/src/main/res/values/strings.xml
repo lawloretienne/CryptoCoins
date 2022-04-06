@@ -2,4 +2,7 @@
     <string name="app_name">CryptoCoins</string>
     <string name="oops_something_went_wrong">Oops! Something went wrong.</string>
     <string name="reload">Reload</string>
+    <string name="exchanges">Exchanges</string>
+    <string name="coins">Coins</string>
+
 </resources>

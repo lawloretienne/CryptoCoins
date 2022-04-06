@@ -2,6 +2,7 @@ package com.example.cryptocoins.data.respositories.coin
 
 import com.example.cryptocoins.data.database.toEntityModels
 import com.example.cryptocoins.data.network.response.CoinResponse
+import com.example.cryptocoins.data.network.response.ExchangeResponse
 import com.example.cryptocoins.data.network.toResponseModels
 import javax.inject.Inject
 
