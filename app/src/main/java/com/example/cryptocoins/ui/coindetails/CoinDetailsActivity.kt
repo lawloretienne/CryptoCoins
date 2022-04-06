@@ -7,11 +7,12 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.example.cryptocoins.R
 import com.example.cryptocoins.databinding.ActivityCoinDetailsBinding
 import com.example.cryptocoins.domain.Coin
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val COIN_ID = "COIN_ID"
@@ -85,9 +86,9 @@ class CoinDetailsActivity : AppCompatActivity() {
     }
 
     private fun showContent(coin: Coin) = with(binding) {
-        Picasso.get()
-            .load(coin.image?.large)
-            .into(coverImageView)
+        coverImageView.load(coin.image?.large) {
+            transformations(CircleCropTransformation())
+        }
 
         symbolTextView.text = coin.symbol
         nameTextView.text = coin.name

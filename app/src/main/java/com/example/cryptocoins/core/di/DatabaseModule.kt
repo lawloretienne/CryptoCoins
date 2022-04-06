@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.cryptocoins.data.database.CryptoCoinsDatabase
 import com.example.cryptocoins.data.database.dao.CoinDao
+import com.example.cryptocoins.data.database.dao.Exchange2Dao
 import com.example.cryptocoins.data.database.dao.ExchangeDao
 import dagger.Module
 import dagger.Provides
@@ -30,5 +31,10 @@ class DatabaseModule {
     @Provides
     fun provideExchangeDao(cryptoCoinsDatabase: CryptoCoinsDatabase): ExchangeDao {
         return cryptoCoinsDatabase.exchangeDao()
+    }
+
+    @Provides
+    fun provideExchange2Dao(cryptoCoinsDatabase: CryptoCoinsDatabase): Exchange2Dao {
+        return cryptoCoinsDatabase.exchange2Dao()
     }
 }

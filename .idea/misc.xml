@@ -10,7 +10,9 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_coins.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_exchanges.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/white_circle.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_coin_details.xml" value="0.29393115942028986" />
+        <entry key="app/src/main/res/layout/activity_exchange_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/coin_row.xml" value="0.335" />
         <entry key="app/src/main/res/layout/coins_content_layout.xml" value="0.15092592592592594" />

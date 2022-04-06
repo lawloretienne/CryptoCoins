@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cryptocoins.R
-import com.example.cryptocoins.databinding.ActivityCoinDetailsBinding
 import com.example.cryptocoins.databinding.CoinRowBinding
 import com.example.cryptocoins.domain.Coin
 

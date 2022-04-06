@@ -1,9 +1,10 @@
 package com.example.cryptocoins.ui.exchanges
 
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.example.cryptocoins.databinding.ExchangeRowBinding
 import com.example.cryptocoins.domain.Exchange
-import com.squareup.picasso.Picasso
 
 class ExchangeViewHolder(binding: ExchangeRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -13,8 +14,8 @@ class ExchangeViewHolder(binding: ExchangeRowBinding) : RecyclerView.ViewHolder(
     fun bind(exchange: Exchange) {
         nameTextView.text = exchange.name
 
-        Picasso.get()
-            .load(exchange.image)
-            .into(imageView)
+        imageView.load(exchange.image) {
+            transformations(CircleCropTransformation())
+        }
     }
 }

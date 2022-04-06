@@ -12,6 +12,7 @@ import com.example.cryptocoins.databinding.FragmentExchangesBinding
 import com.example.cryptocoins.domain.Coin
 import com.example.cryptocoins.domain.Exchange
 import com.example.cryptocoins.ui.coindetails.CoinDetailsActivity
+import com.example.cryptocoins.ui.exchangedetails.ExchangeDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -81,8 +82,8 @@ class ExchangesFragment : Fragment(), ExchangesAdapter.OnItemClickListener {
         when (command) {
             is ExchangesViewModel.ViewCommand.ShowExchangeDetails -> {
                 val exchange = command.exchange
-//                val intent = ExchangeDetailsActivity.createIntent(requireContext(), exchange.id)
-//                startActivity(intent)
+                val intent = ExchangeDetailsActivity.createIntent(requireContext(), exchange.id)
+                startActivity(intent)
             }
         }
     }

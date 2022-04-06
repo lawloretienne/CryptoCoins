@@ -28,7 +28,12 @@
             android:name="com.example.cryptocoins.ui.coindetails.CoinDetailsActivity"
             android:screenOrientation="portrait">
         </activity>
-        
+
+        <activity
+            android:name="com.example.cryptocoins.ui.exchangedetails.ExchangeDetailsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.cryptocoins.data.network
 
 import com.example.cryptocoins.data.network.response.CoinResponse
+import com.example.cryptocoins.data.network.response.Exchange2Response
 import com.example.cryptocoins.data.network.response.ExchangeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -24,4 +25,9 @@ interface CoinsService {
 
     @GET("exchanges")
     suspend fun getExchanges(): List<ExchangeResponse>
+
+    @GET("exchanges/{id}")
+    suspend fun getExchange(
+        @Path("id") coinId: String
+    ): Exchange2Response
 }
