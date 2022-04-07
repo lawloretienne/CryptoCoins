@@ -1,5 +1,5 @@
 # Screenshots
-![Crypto Coins](crypto_coins_screenshot.png)
+![Crypto Coins](crypto_coins_screenshot.jpeg)
 
 # Architecture
 
