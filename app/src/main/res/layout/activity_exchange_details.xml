@@ -14,7 +14,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="?colorPrimaryVariant"
+            android:background="?colorPrimary"
             app:title="Exchange Details"
             app:titleTextColor="@color/primary_text_light"
             app:layout_constraintTop_toTopOf="parent"/>

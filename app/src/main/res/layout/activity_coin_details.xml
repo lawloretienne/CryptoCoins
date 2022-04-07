@@ -14,7 +14,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="?colorPrimaryVariant"
+            android:background="?colorPrimary"
             app:title="Coin Details"
             app:titleTextColor="@color/primary_text_light"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -30,31 +30,31 @@
             app:layout_constraintDimensionRatio="1:1" />
 
         <TextView
-            android:id="@+id/symbolTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textColor="@color/primary_text_light"
-            tools:text="btc"
-            app:layout_constraintTop_toBottomOf="@id/coverImageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <TextView
             android:id="@+id/nameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:maxLines="2"
             android:ellipsize="end"
-            android:textColor="@color/secondary_text_light"
-            app:layout_constraintTop_toBottomOf="@id/symbolTextView"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/primary_text_light"
+            app:layout_constraintTop_toBottomOf="@id/coverImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Bitcoin" />
+
+        <TextView
+            android:id="@+id/symbolTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/secondary_text_light"
+            tools:text="btc"
+            app:layout_constraintTop_toBottomOf="@id/nameTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/descriptionTextView"
@@ -63,7 +63,7 @@
             android:layout_marginHorizontal="16dp"
             tools:text="22 mins"
             android:textColor="@color/tertiary_text_light"
-            app:layout_constraintTop_toBottomOf="@id/nameTextView"
+            app:layout_constraintTop_toBottomOf="@id/symbolTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 

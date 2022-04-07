@@ -8,30 +8,33 @@
     android:background="@color/md_grey_900">
 
     <TextView
-        android:id="@+id/symbolTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:maxLines="1"
-        android:ellipsize="end"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/primary_text_light"
-        tools:text="btc"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@id/nameTextView"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:maxLines="2"
         android:ellipsize="end"
-        android:textColor="@color/secondary_text_light"
+        android:textColor="@color/primary_text_light"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Bitcoin"
-        app:layout_constraintTop_toBottomOf="@id/symbolTextView"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/symbolTextView"
+        />
+
+    <TextView
+        android:id="@+id/symbolTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/secondary_text_light"
+        tools:text="btc"
+        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
