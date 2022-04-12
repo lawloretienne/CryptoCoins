@@ -1,5 +1,5 @@
 # Screenshots
-![Crypto Coins](crypto_coins_screenshot.jpeg)
+![Crypto Coins](CryptoCoins.png)
 
 # Architecture
 
@@ -62,4 +62,4 @@
     * In the future, it would help to write Android UI tests with Espresso.
 
 
-This project was created with Android Studio 4.2 Canary 10
+This project was created with Android Studio Bumblebee
