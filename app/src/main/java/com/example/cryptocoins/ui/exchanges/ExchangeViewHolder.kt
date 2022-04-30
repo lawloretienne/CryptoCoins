@@ -3,6 +3,7 @@ package com.example.cryptocoins.ui.exchanges
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
+import com.example.cryptocoins.R
 import com.example.cryptocoins.databinding.ExchangeRowBinding
 import com.example.cryptocoins.domain.Exchange
 
@@ -16,6 +17,8 @@ class ExchangeViewHolder(binding: ExchangeRowBinding) : RecyclerView.ViewHolder(
 
         imageView.load(exchange.image) {
             transformations(CircleCropTransformation())
+            placeholder(R.drawable.photo_placeholder)
+            error(R.drawable.photo_error)
         }
     }
 }

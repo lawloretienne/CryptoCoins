@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -12,6 +13,7 @@ import com.example.cryptocoins.databinding.FragmentExchangesBinding
 import com.example.cryptocoins.domain.Coin
 import com.example.cryptocoins.domain.Exchange
 import com.example.cryptocoins.ui.coindetails.CoinDetailsActivity
+import com.example.cryptocoins.ui.coins.CoinsViewModel
 import com.example.cryptocoins.ui.exchangedetails.ExchangeDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -88,48 +90,14 @@ class ExchangesFragment : Fragment(), ExchangesAdapter.OnItemClickListener {
         }
     }
 
-    private fun handleState(state: ExchangesViewModel.ViewState) {
-        when (state) {
-            is ExchangesViewModel.ViewState.Loading -> {
-                showLoading()
-                hideError()
-                hideContent()
-            }
-            is ExchangesViewModel.ViewState.Error -> {
-                showError()
-                hideLoading()
-                hideContent()
-            }
-            is ExchangesViewModel.ViewState.Success -> {
-                exchangesAdapter.submitList(state.exchanges)
-                showContent()
-                hideError()
-                hideLoading()
-            }
+    private fun handleState(state: ExchangesViewModel.ViewState) = with( binding) {
+        loadingLayout.progressBar.isVisible = state is ExchangesViewModel.ViewState.Loading
+        errorLayout.errorLinearLayout.isVisible = state is ExchangesViewModel.ViewState.Error
+        contentLayout.recyclerView.isVisible = state is ExchangesViewModel.ViewState.Success
+
+        if(state is ExchangesViewModel.ViewState.Success){
+            exchangesAdapter.submitList(state.exchanges)
         }
     }
 
-    private fun showLoading() = with(binding.loadingLayout) {
-        progressBar.visibility = View.VISIBLE
-    }
-
-    private fun hideLoading() = with(binding.loadingLayout) {
-        progressBar.visibility = View.GONE
-    }
-
-    private fun showError() = with(binding.errorLayout) {
-        errorLinearLayout.visibility = View.VISIBLE
-    }
-
-    private fun hideError() = with(binding.errorLayout) {
-        errorLinearLayout.visibility = View.GONE
-    }
-
-    private fun showContent() = with(binding.contentLayout) {
-        recyclerView.visibility = View.VISIBLE
-    }
-
-    private fun hideContent() = with(binding.contentLayout) {
-        recyclerView.visibility = View.GONE
-    }
 }

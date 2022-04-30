@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -85,48 +86,13 @@ class CoinsFragment : Fragment(), CoinsAdapter.OnItemClickListener {
         }
     }
 
-    private fun handleState(state: CoinsViewModel.ViewState) {
-        when (state) {
-            is CoinsViewModel.ViewState.Loading -> {
-                showLoading()
-                hideError()
-                hideContent()
-            }
-            is CoinsViewModel.ViewState.Error -> {
-                showError()
-                hideLoading()
-                hideContent()
-            }
-            is CoinsViewModel.ViewState.Success -> {
-                coinsAdapter.submitList(state.coins)
-                showContent()
-                hideError()
-                hideLoading()
-            }
+    private fun handleState(state: CoinsViewModel.ViewState) = with( binding) {
+        loadingLayout.progressBar.isVisible = state is CoinsViewModel.ViewState.Loading
+        errorLayout.errorLinearLayout.isVisible = state is CoinsViewModel.ViewState.Error
+        contentLayout.recyclerView.isVisible = state is CoinsViewModel.ViewState.Success
+
+        if(state is CoinsViewModel.ViewState.Success){
+            coinsAdapter.submitList(state.coins)
         }
-    }
-
-    private fun showLoading() = with(binding.loadingLayout) {
-        progressBar.visibility = View.VISIBLE
-    }
-
-    private fun hideLoading() = with(binding.loadingLayout) {
-        progressBar.visibility = View.GONE
-    }
-
-    private fun showError() = with(binding.errorLayout) {
-        errorLinearLayout.visibility = View.VISIBLE
-    }
-
-    private fun hideError() = with(binding.errorLayout) {
-        errorLinearLayout.visibility = View.GONE
-    }
-
-    private fun showContent() = with(binding.contentLayout) {
-        recyclerView.visibility = View.VISIBLE
-    }
-
-    private fun hideContent() = with(binding.contentLayout) {
-        recyclerView.visibility = View.GONE
     }
 }
