@@ -90,7 +90,6 @@ class ExchangeDetailsActivity : AppCompatActivity() {
             transformations(CircleCropTransformation())
         }
 
-
         nameTextView.text = exchange.name
         urlTextView.text = exchange.url
         twitterHandleTextView.text = "@${exchange.twitter_handle}"

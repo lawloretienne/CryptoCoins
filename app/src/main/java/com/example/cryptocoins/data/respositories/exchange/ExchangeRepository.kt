@@ -16,13 +16,11 @@ class ExchangeRepository @Inject constructor(
 
     suspend fun getExchanges(): List<ExchangeResponse> = withContext(Dispatchers.IO) {
         val local = exchangeLocalDataSource.getExchanges().toResponseModels()
-        if (local.isEmpty()) {
+        local.ifEmpty {
             val remote = exchangeRemoteDataSource.getExchanges()
-            if(remote.isNotEmpty())
+            if (remote.isNotEmpty())
                 exchangeLocalDataSource.saveExchanges(remote.toEntityModels())
             remote
-        } else {
-            local
         }
     }
 

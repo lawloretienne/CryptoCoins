@@ -7,9 +7,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 class Migration2To3 : Migration(2, 3) {
     override fun migrate(database: SupportSQLiteDatabase) {
-
         database.execSQL("CREATE TABLE IF NOT EXISTS `exchange_2` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `image` TEXT NOT NULL, `twitter_handle` TEXT, PRIMARY KEY(`name`))")
-
     }
 
 }

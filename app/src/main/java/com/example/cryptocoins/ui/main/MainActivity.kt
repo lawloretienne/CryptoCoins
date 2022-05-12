@@ -20,21 +20,23 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            val currentFragment = supportFragmentManager.findFragmentById(R.id.mainContentFrameLayout)
-            if (currentFragment == null) {
-                loadFragment(item.itemId)
-            } else {
-                if (!item.isChecked) {
-                    item.isChecked = true
+        binding.bottomNavigationView.apply {
+            setOnItemSelectedListener { item ->
+                val currentFragment = supportFragmentManager.findFragmentById(R.id.mainContentFrameLayout)
+                if (currentFragment == null) {
                     loadFragment(item.itemId)
+                } else {
+                    if (!item.isChecked) {
+                        item.isChecked = true
+                        loadFragment(item.itemId)
+                    }
                 }
+
+                false
             }
 
-            false
+            selectedItemId = R.id.action_exchanges
         }
-
-        binding.bottomNavigationView.selectedItemId = R.id.action_exchanges
     }
 
     override fun onBackPressed() = with(binding) {

@@ -14,13 +14,11 @@ class CoinRepository @Inject constructor(
 
     suspend fun getCoins(): List<CoinResponse> = withContext(Dispatchers.IO) {
         val local = coinLocalDataSource.getCoins().toResponseModels()
-        if (local.isEmpty()) {
+        local.ifEmpty {
             val remote = coinRemoteDataSource.getCoins()
-            if(remote.isNotEmpty())
+            if (remote.isNotEmpty())
                 coinLocalDataSource.saveCoins(remote.toEntityModels())
             remote
-        } else {
-            local
         }
     }
 
