@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CoinsViewModel @Inject constructor(
-    val coinRepository: CoinRepository) : ViewModel() {
+    private val coinRepository: CoinRepository) : ViewModel() {
 
     val viewState: LiveData<ViewState>
         get() = _viewState

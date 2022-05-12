@@ -22,7 +22,7 @@ class CoinsAdapter : ListAdapter<Coin, RecyclerView.ViewHolder>(CoinDiffCallback
 
         val viewHolder = CoinViewHolder(binding)
         viewHolder.itemView.setOnClickListener {
-            val adapterPos = viewHolder.adapterPosition
+            val adapterPos = viewHolder.bindingAdapterPosition
             if (adapterPos != RecyclerView.NO_POSITION) {
                 onItemClickListener?.onItemClick(getItem(adapterPos))
             }

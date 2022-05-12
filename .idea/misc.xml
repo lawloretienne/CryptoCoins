@@ -8,8 +8,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_coins.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_exchanges.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/photo_error.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/white_circle.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_coin_details.xml" value="0.29393115942028986" />
         <entry key="app/src/main/res/layout/activity_exchange_details.xml" value="0.1" />
@@ -20,6 +22,9 @@
         <entry key="app/src/main/res/layout/exchange_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_coins.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_exchanges.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/generic_content_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/generic_error_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/generic_loading_layout.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_navigation_main.xml" value="0.1" />
       </map>
     </option>

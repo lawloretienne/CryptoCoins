@@ -21,20 +21,20 @@
 
         <ImageView
             android:id="@+id/coverImageView"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/spacing_0x"
+            android:layout_height="@dimen/cover_image_height"
             android:scaleType="fitCenter"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/spacing_3x"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintDimensionRatio="1:1" />
 
         <TextView
             android:id="@+id/nameTextView"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/spacing_0x"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="@dimen/spacing_3x"
+            android:layout_marginTop="@dimen/spacing_3x"
             android:maxLines="2"
             android:ellipsize="end"
             android:textColor="@color/primary_text_light"
@@ -45,9 +45,9 @@
 
         <TextView
             android:id="@+id/twitterHandleTextView"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/spacing_0x"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/spacing_3x"
             tools:text="22 mins"
             android:textColor="@color/secondary_text_light"
             app:layout_constraintTop_toBottomOf="@id/nameTextView"
@@ -56,9 +56,9 @@
 
         <TextView
             android:id="@+id/urlTextView"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/spacing_0x"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/spacing_3x"
             tools:text="2009-01-03"
             android:textColor="@color/tertiary_text_light"
             app:layout_constraintTop_toBottomOf="@id/twitterHandleTextView"
@@ -66,7 +66,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="@dimen/spacing_3x"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

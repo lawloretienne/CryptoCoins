@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- standardized widths -->
+    <dimen name="width_0x">0dp</dimen>
+    <dimen name="width_1x">4dp</dimen>
+    <dimen name="width_2x">8dp</dimen>
+    <dimen name="width_3x">16dp</dimen>
+    <dimen name="width_4x">24dp</dimen>
+    <dimen name="width_5x">32dp</dimen>
+    <dimen name="width_6x">40dp</dimen>
+    <dimen name="width_7x">48dp</dimen>
+    <dimen name="width_8x">56dp</dimen>
+    <dimen name="width_9x">64dp</dimen>
+
+    <!-- standardized heights -->
+    <dimen name="height_0x">0dp</dimen>
+    <dimen name="height_1x">4dp</dimen>
+    <dimen name="height_2x">8dp</dimen>
+    <dimen name="height_3x">16dp</dimen>
+    <dimen name="height_4x">24dp</dimen>
+    <dimen name="height_5x">32dp</dimen>
+    <dimen name="height_6x">40dp</dimen>
+    <dimen name="height_7x">48dp</dimen>
+    <dimen name="height_8x">56dp</dimen>
+    <dimen name="height_9x">64dp</dimen>
+
+    <!-- standardized spacing (for margins and padding) -->
+    <dimen name="spacing_0x">0dp</dimen>
+    <dimen name="spacing_1x">4dp</dimen>
+    <dimen name="spacing_2x">8dp</dimen>
+    <dimen name="spacing_3x">16dp</dimen>
+    <dimen name="spacing_4x">24dp</dimen>
+    <dimen name="spacing_5x">32dp</dimen>
+    <dimen name="spacing_6x">40dp</dimen>
+    <dimen name="spacing_7x">48dp</dimen>
+    <dimen name="spacing_8x">56dp</dimen>
+    <dimen name="spacing_9x">64dp</dimen>
+
+    <!-- standardized text sizes -->
+    <dimen name="text_size_1x">14sp</dimen>
+    <dimen name="text_size_2x">16sp</dimen>
+    <dimen name="text_size_3x">18sp</dimen>
+    <dimen name="text_size_4x">20sp</dimen>
+    <dimen name="text_size_5x">22sp</dimen>
+    <dimen name="text_size_6x">24sp</dimen>
+
+    <!-- custom dimensions -->
+    <dimen name="cover_image_height">100dp</dimen>
+    <dimen name="coin_row_height">72dp</dimen>
+    <dimen name="exchange_row_height">72dp</dimen>
+    <dimen name="error_layout_width">288dp</dimen>
+
+</resources>

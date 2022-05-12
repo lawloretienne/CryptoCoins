@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/errorLinearLayout"
-    android:layout_width="288dp"
+    android:layout_width="@dimen/error_layout_width"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="center_horizontal"
@@ -23,23 +23,23 @@
         android:id="@+id/errorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="@dimen/spacing_3x"
         android:gravity="center"
         android:text="@string/oops_something_went_wrong"
         android:textColor="@color/secondary_text_light"
-        android:textSize="20sp" />
+        android:textSize="@dimen/text_size_4x" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/reloadButton"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
+        android:layout_marginTop="@dimen/spacing_3x"
+        android:insetTop="@dimen/spacing_0x"
+        android:insetBottom="@dimen/spacing_0x"
         android:text="@string/reload"
         android:textColor="@color/purple_200"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_size_4x"
         app:backgroundTint="@color/purple_700" />
 
 </LinearLayout>

@@ -9,13 +9,15 @@ import com.example.cryptocoins.data.respositories.exchange.ExchangeRepository
 import com.example.cryptocoins.domain.Exchange
 import com.example.cryptocoins.domain.toDomainModels
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class ExchangesViewModel @Inject constructor(
-    val exchangeRepository: ExchangeRepository
+    private val exchangeRepository: ExchangeRepository
 ) : ViewModel() {
 
     val viewState: LiveData<ViewState>

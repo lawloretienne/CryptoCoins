@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
+    android:layout_height="@dimen/coin_row_height"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:foreground="?android:attr/selectableItemBackground"
@@ -11,7 +11,7 @@
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="@dimen/spacing_3x"
         android:maxLines="2"
         android:ellipsize="end"
         android:textColor="@color/primary_text_light"
@@ -19,14 +19,13 @@
         tools:text="Bitcoin"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/symbolTextView"
-        />
+        app:layout_constraintBottom_toTopOf="@id/symbolTextView" />
 
     <TextView
         android:id="@+id/symbolTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="@dimen/spacing_3x"
         android:maxLines="1"
         android:ellipsize="end"
         android:textColor="@color/secondary_text_light"
@@ -34,7 +33,5 @@
         app:layout_constraintTop_toBottomOf="@id/nameTextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

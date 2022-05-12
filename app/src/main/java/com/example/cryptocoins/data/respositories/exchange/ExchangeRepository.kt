@@ -5,6 +5,8 @@ import com.example.cryptocoins.data.network.response.CoinResponse
 import com.example.cryptocoins.data.network.response.Exchange2Response
 import com.example.cryptocoins.data.network.response.ExchangeResponse
 import com.example.cryptocoins.data.network.toResponseModels
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ExchangeRepository @Inject constructor(
@@ -12,9 +14,9 @@ class ExchangeRepository @Inject constructor(
     private val exchangeLocalDataSource: ExchangeLocalDataSource
 ) {
 
-    suspend fun getExchanges(): List<ExchangeResponse> {
+    suspend fun getExchanges(): List<ExchangeResponse> = withContext(Dispatchers.IO) {
         val local = exchangeLocalDataSource.getExchanges().toResponseModels()
-        return if (local.isEmpty()) {
+        if (local.isEmpty()) {
             val remote = exchangeRemoteDataSource.getExchanges()
             if(remote.isNotEmpty())
                 exchangeLocalDataSource.saveExchanges(remote.toEntityModels())
@@ -24,11 +26,11 @@ class ExchangeRepository @Inject constructor(
         }
     }
 
-    suspend fun getExchange(exchangeId: String): Exchange2Response {
+    suspend fun getExchange(exchangeId: String): Exchange2Response = withContext(Dispatchers.IO) {
 //        val local = exchangeLocalDataSource.getExchange2(exchangeId).toResponseModel()
         val remote =
             exchangeRemoteDataSource.getExchange2(exchangeId)
 //        return local.onErrorResumeNext { remote }
-        return remote
+        remote
     }
 }

@@ -22,7 +22,7 @@ class ExchangesAdapter : ListAdapter<Exchange, RecyclerView.ViewHolder>(Exchange
 
         val viewHolder = ExchangeViewHolder(binding)
         viewHolder.itemView.setOnClickListener {
-            val adapterPos = viewHolder.adapterPosition
+            val adapterPos = viewHolder.bindingAdapterPosition
             if (adapterPos != RecyclerView.NO_POSITION) {
                 onItemClickListener?.onItemClick(getItem(adapterPos))
             }

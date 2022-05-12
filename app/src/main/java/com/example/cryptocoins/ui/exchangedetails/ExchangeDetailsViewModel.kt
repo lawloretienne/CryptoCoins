@@ -8,13 +8,15 @@ import com.example.cryptocoins.core.common.SingleLiveEvent
 import com.example.cryptocoins.data.respositories.exchange.ExchangeRepository
 import com.example.cryptocoins.domain.Exchange2
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class ExchangeDetailsViewModel @Inject constructor(
-    val exchangeRepository: ExchangeRepository) : ViewModel() {
+    private val exchangeRepository: ExchangeRepository) : ViewModel() {
 
     val viewState: LiveData<ViewState>
         get() = _viewState
