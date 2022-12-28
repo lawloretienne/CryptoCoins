@@ -41,13 +41,12 @@ class CoinsViewModel @Inject constructor(
 
         viewModelScope.launch {
             runCatching {
-                try {
-                    var coins = coinRepository.getCoins()
-                    _viewState.value = ViewState.Success(coins.toDomainModels())
-                } catch (e: Exception) {
-                    Timber.e(e)
-                    _viewState.value = ViewState.Error
-                }
+                coinRepository.getCoins()
+            }.onSuccess { coins ->
+                _viewState.value = ViewState.Success(coins.toDomainModels())
+            }.onFailure {
+                Timber.e(it)
+                _viewState.value = ViewState.Error
             }
         }
     }

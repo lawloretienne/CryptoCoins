@@ -8,6 +8,7 @@ import com.example.cryptocoins.core.common.SingleLiveEvent
 import com.example.cryptocoins.data.respositories.exchange.ExchangeRepository
 import com.example.cryptocoins.domain.Exchange
 import com.example.cryptocoins.domain.toDomainModels
+import com.example.cryptocoins.ui.coindetails.CoinDetailsViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,13 +44,12 @@ class ExchangesViewModel @Inject constructor(
 
         viewModelScope.launch {
             runCatching {
-                try {
-                    var exchanges = exchangeRepository.getExchanges()
-                    _viewState.value = ViewState.Success(exchanges.toDomainModels())
-                } catch (e: Exception) {
-                    Timber.e(e)
-                    _viewState.value = ViewState.Error
-                }
+                exchangeRepository.getExchanges()
+            }.onSuccess { exchanges ->
+                _viewState.value = ViewState.Success(exchanges.toDomainModels())
+            }.onFailure {
+                Timber.e(it)
+                _viewState.value = ViewState.Error
             }
         }
     }

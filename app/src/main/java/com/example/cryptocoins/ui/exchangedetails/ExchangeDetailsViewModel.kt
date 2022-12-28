@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.cryptocoins.core.common.SingleLiveEvent
 import com.example.cryptocoins.data.respositories.exchange.ExchangeRepository
 import com.example.cryptocoins.domain.Exchange2
+import com.example.cryptocoins.ui.coindetails.CoinDetailsViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,13 +39,12 @@ class ExchangeDetailsViewModel @Inject constructor(
     fun getExchangeDetails(exchangeId: String) {
         viewModelScope.launch {
             runCatching {
-                try {
-                    var exchange = exchangeRepository.getExchange(exchangeId)
-                    _viewState.value = ViewState.Success(exchange.toDomainModel())
-                } catch (e: Exception) {
-                    Timber.e(e)
-                    _viewState.value = ViewState.Error
-                }
+                exchangeRepository.getExchange(exchangeId)
+            }.onSuccess { exchange ->
+                _viewState.value = ViewState.Success(exchange.toDomainModel())
+            }.onFailure {
+                Timber.e(it)
+                _viewState.value = ViewState.Error
             }
         }
     }
