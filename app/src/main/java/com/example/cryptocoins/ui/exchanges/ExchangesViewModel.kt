@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cryptocoins.core.common.SingleLiveEvent
+import com.example.cryptocoins.data.network.response.ExchangeResponse
 import com.example.cryptocoins.data.respositories.exchange.ExchangeRepository
 import com.example.cryptocoins.domain.Exchange
 import com.example.cryptocoins.domain.toDomainModels
@@ -45,6 +46,14 @@ class ExchangesViewModel @Inject constructor(
         viewModelScope.launch {
             runCatching {
                 exchangeRepository.getExchanges()
+//                val mutableList = exchanges.toMutableList()
+//                val transformedList = mutableListOf<Any>()
+//                mutableList.forEachIndexed { index, exchange ->
+//                    transformedList.add(exchange)
+//                    if(index % 5 == 0){
+//                        transformedList.add(String()))
+//                    }
+//                }
             }.onSuccess { exchanges ->
                 _viewState.value = ViewState.Success(exchanges.toDomainModels())
             }.onFailure {

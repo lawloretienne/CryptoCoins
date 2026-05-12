@@ -54,6 +54,10 @@ class NetworkModule {
 
         okHttpClientBuilder.addInterceptor(httpLoggingInterceptor)
 
+//        okHttpClientBuilder.addInterceptor {
+//            it.
+//        }
+
         return okHttpClientBuilder.build()
     }
 

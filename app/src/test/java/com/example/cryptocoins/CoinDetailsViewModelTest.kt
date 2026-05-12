@@ -51,7 +51,9 @@ class CoinDetailsViewModelTest : BaseTest() {
         // 1. (Given) Set up conditions required for the test
         coinDetailsViewModel.viewState.observeForever(stateObserver)
         val coinId = faker.lorem().word()
-        val coin = CoinFaker.basic()
+        val coin = CoinFaker.basic().copy(
+            symbol = "btc"
+        )
 
         coEvery { coinRepository.getCoin(coinId) }
             .answers { coin.toResponseModel() }
